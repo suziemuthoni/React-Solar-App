@@ -1,0 +1,8 @@
+.industrial-section {
+  text-align: center;
+  background: var(--light-bg);
+}
+
+.industrial-section h2 {
+  margin-bottom: 2rem;
+}

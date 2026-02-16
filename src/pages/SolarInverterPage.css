@@ -1,0 +1,241 @@
+.solar-inverter-page {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.inverter-hero {
+  position: relative;
+  height: 600px;
+  overflow: hidden;
+  margin-top: 70px;
+}
+
+.hero-image-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-image-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+}
+
+.hero-overlay .container {
+  text-align: center;
+  color: var(--white);
+}
+
+.inverter-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* What is Section */
+.what-is-section {
+  padding: 80px 0;
+  background: var(--white);
+}
+
+.what-is-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--secondary-color);
+}
+
+.what-is-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.what-is-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.what-is-content .btn {
+  margin-top: 1rem;
+}
+
+/* Products Section */
+.inverter-products-section {
+  padding: 80px 0;
+  background: var(--light-bg);
+}
+
+.inverter-products-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--secondary-color);
+}
+
+.inverter-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 3rem;
+}
+
+.inverter-product-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.inverter-product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.inverter-product-image {
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+}
+
+.inverter-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.inverter-product-info {
+  padding: 2.5rem;
+}
+
+.inverter-product-info h3 {
+  font-size: 1.8rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.inverter-product-info p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.inverter-product-info .btn {
+  width: 100%;
+}
+
+/* Features Section */
+.inverter-features-section {
+  padding: 80px 0;
+  background: var(--white);
+}
+
+.inverter-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+}
+
+.inverter-feature-item {
+  text-align: center;
+  padding: 2rem;
+}
+
+.inverter-feature-item .feature-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.inverter-feature-item h3 {
+  font-size: 1.3rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.inverter-feature-item p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .inverter-hero {
+    height: 400px;
+  }
+
+  .inverter-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .inverter-products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .inverter-hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .what-is-section h2,
+  .inverter-products-section h2 {
+    font-size: 2rem;
+  }
+
+  .what-is-content p {
+    font-size: 1rem;
+  }
+
+  .inverter-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .inverter-hero {
+    height: 350px;
+  }
+
+  .inverter-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}

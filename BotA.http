@@ -1,0 +1,6 @@
+@BotA_HostAddress = http://localhost:5053
+
+GET {{BotA_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

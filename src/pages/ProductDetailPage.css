@@ -1,0 +1,563 @@
+.product-detail-page {
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.product-hero {
+  position: relative;
+  min-height: 700px;
+  overflow: hidden;
+  margin-top: 70px;
+  background: linear-gradient(135deg, #1a5490 0%, #2d7ab8 100%);
+}
+
+.hero-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+}
+
+.hero-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content-overlay {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 0;
+  color: var(--white);
+}
+
+.product-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.product-hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.product-hero h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-description,
+.hero-subtext {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 900px;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.pricing-section {
+  margin-top: 3rem;
+}
+
+.price-card {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--secondary-color);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  max-width: 500px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.new-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.discount-badge {
+  display: inline-block;
+  background: #e74c3c;
+  color: var(--white);
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.payment-terms {
+  font-size: 1rem;
+  color: #666;
+}
+
+/* Build Section */
+.build-section {
+  padding: 80px 0;
+  background: var(--white);
+}
+
+.build-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--secondary-color);
+}
+
+.build-description {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+}
+
+/* Benefits Section */
+.benefits-section {
+  padding: 80px 0;
+  background: var(--light-bg);
+}
+
+.benefits-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--secondary-color);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+.benefit-card {
+  text-align: center;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+}
+
+.benefit-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.benefit-card p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Power Capabilities Section */
+.power-capabilities-section {
+  padding: 80px 0;
+  background: var(--white);
+}
+
+.power-capabilities-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--secondary-color);
+}
+
+.power-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.power-card {
+  text-align: center;
+  padding: 2rem;
+  background: var(--light-bg);
+  border-radius: var(--border-radius);
+  border: 2px solid var(--primary-color);
+}
+
+.power-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.power-card h3 {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  line-height: 1.5;
+}
+
+/* How It Works Section */
+.how-it-works-section {
+  padding: 80px 0;
+  background: var(--light-bg);
+}
+
+.how-it-works-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--secondary-color);
+}
+
+.how-it-works-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.how-it-works-content > p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.how-it-works-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.step {
+  text-align: center;
+  padding: 2rem;
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  background: var(--primary-color);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 1.5rem;
+}
+
+.step p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Configurations Section */
+.configurations-section {
+  padding: 80px 0;
+  background: var(--white);
+}
+
+.configurations-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--secondary-color);
+}
+
+.config-intro {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 4rem;
+}
+
+.configurations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.config-card {
+  background: var(--light-bg);
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.config-card h3 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.config-specs {
+  margin-bottom: 2rem;
+}
+
+.spec-item {
+  margin-bottom: 1.5rem;
+}
+
+.spec-item strong {
+  display: block;
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.spec-item p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.can-power {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--white);
+  border-radius: var(--border-radius);
+}
+
+.can-power h4 {
+  font-size: 1.3rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.can-power ul {
+  list-style: none;
+  padding: 0;
+}
+
+.can-power li {
+  padding: 0.5rem 0;
+  color: #555;
+  border-bottom: 1px solid #eee;
+}
+
+.can-power li:last-child {
+  border-bottom: none;
+}
+
+.pricing {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--white);
+  border-radius: var(--border-radius);
+}
+
+.pricing h4 {
+  font-size: 1.3rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.price-option {
+  margin-bottom: 1.5rem;
+}
+
+.price-option:last-child {
+  margin-bottom: 0;
+}
+
+.price-option strong {
+  display: block;
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.price-option p {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.price-details {
+  font-size: 0.9rem !important;
+  color: #666 !important;
+  font-weight: 400 !important;
+}
+
+.contact-note {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--light-bg);
+  border-radius: var(--border-radius);
+}
+
+/* Specifications Section */
+.specifications-section {
+  padding: 80px 0;
+  background: var(--light-bg);
+}
+
+.specifications-section h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--secondary-color);
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+}
+
+.spec-category {
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.spec-category h3 {
+  font-size: 1.6rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.spec-category ul {
+  list-style: none;
+  padding: 0;
+}
+
+.spec-category li {
+  padding: 0.8rem 0;
+  color: #555;
+  line-height: 1.6;
+  border-bottom: 1px solid #eee;
+}
+
+.spec-category li:last-child {
+  border-bottom: none;
+}
+
+.spec-category strong {
+  color: var(--secondary-color);
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 80px 0;
+  background: var(--white);
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--secondary-color);
+}
+
+.contact-intro {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 3rem;
+}
+
+.contact-info {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contact-info .btn {
+  min-width: 250px;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .product-hero {
+    min-height: 500px;
+  }
+
+  .product-hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .product-hero h2 {
+    font-size: 1.6rem;
+  }
+
+  .configurations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-hero h1 {
+    font-size: 2rem;
+  }
+
+  .product-hero h2 {
+    font-size: 1.4rem;
+  }
+
+  .hero-description,
+  .hero-subtext {
+    font-size: 1rem;
+  }
+
+  .benefits-grid,
+  .power-grid,
+  .how-it-works-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-hero {
+    min-height: 400px;
+  }
+
+  .product-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .new-price {
+    font-size: 1.6rem;
+  }
+}

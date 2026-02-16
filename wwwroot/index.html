@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polymarket Arbitrage Bot Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .status-bar {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .status-badge {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .status-running {
+            background: #10b981;
+            color: white;
+        }
+
+        .status-stopped {
+            background: #ef4444;
+            color: white;
+        }
+
+        .status-paused {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn-start {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-stop {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-pause {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .btn-clear {
+            background: #6b7280;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .stat-value.positive {
+            color: #10b981;
+        }
+
+        .stat-value.negative {
+            color: #ef4444;
+        }
+
+        .trades-section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .trades-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #f3f4f6;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            font-weight: 600;
+            color: #374151;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+
+        .trade-status {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .trade-filled {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .trade-failed {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .trade-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .trade-dryrun {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .profit-positive {
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .profit-negative {
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+        }
+
+        .auto-refresh {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .timestamp {
+            color: #6b7280;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 Polymarket Arbitrage Bot Dashboard</h1>
+            <div class="status-bar">
+                <span class="status-badge" id="statusBadge">Loading...</span>
+                <button class="btn btn-start" onclick="startBot()">▶ Start</button>
+                <button class="btn btn-pause" onclick="pauseBot()">⏸ Pause</button>
+                <button class="btn btn-stop" onclick="stopBot()">⏹ Stop</button>
+                <button class="btn btn-clear" onclick="clearTrades()">🗑 Clear History</button>
+                <div class="auto-refresh">
+                    <input type="checkbox" id="autoRefresh" checked>
+                    <label for="autoRefresh">Auto-refresh (5s)</label>
+                </div>
+                <span id="uptime" style="color: #6b7280; font-size: 14px;"></span>
+            </div>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Trades</div>
+                <div class="stat-value" id="totalTrades">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Net P&L</div>
+                <div class="stat-value" id="netPnL">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Win Rate</div>
+                <div class="stat-value" id="winRate">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Current Balance</div>
+                <div class="stat-value" id="balance">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Profit</div>
+                <div class="stat-value positive" id="totalProfit">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Loss</div>
+                <div class="stat-value negative" id="totalLoss">-</div>
+            </div>
+        </div>
+
+        <div class="trades-section">
+            <div class="trades-header">
+                <h2>Recent Trades</h2>
+                <span class="timestamp" id="lastUpdate">Last updated: -</span>
+            </div>
+            <div id="tradesTable">
+                <div class="loading">Loading trades...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = '/api/dashboard';
+        let refreshInterval;
+
+        async function fetchStatistics() {
+            try {
+                const response = await fetch(`${API_BASE}/statistics`);
+                const data = await response.json();
+                
+                document.getElementById('totalTrades').textContent = data.totalTrades;
+                document.getElementById('netPnL').textContent = `$${data.netProfitLoss.toFixed(2)}`;
+                document.getElementById('netPnL').className = `stat-value ${data.netProfitLoss >= 0 ? 'positive' : 'negative'}`;
+                document.getElementById('winRate').textContent = `${data.winRate.toFixed(1)}%`;
+                document.getElementById('balance').textContent = `$${data.currentBalance.toFixed(2)}`;
+                document.getElementById('totalProfit').textContent = `$${data.totalProfit.toFixed(2)}`;
+                document.getElementById('totalLoss').textContent = `$${data.totalLoss.toFixed(2)}`;
+                
+                updateStatusBadge(data.botStatus);
+            } catch (error) {
+                console.error('Error fetching statistics:', error);
+            }
+        }
+
+        async function fetchTrades() {
+            try {
+                const response = await fetch(`${API_BASE}/trades?limit=100`);
+                const trades = await response.json();
+                
+                if (trades.length === 0) {
+                    document.getElementById('tradesTable').innerHTML = '<div class="loading">No trades yet</div>';
+                    return;
+                }
+                
+                let html = `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Market</th>
+                                <th>Yes Price</th>
+                                <th>No Price</th>
+                                <th>Total Cost</th>
+                                <th>Size</th>
+                                <th>Expected Profit</th>
+                                <th>Actual P&L</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                trades.forEach(trade => {
+                    const time = new Date(trade.timestamp).toLocaleString();
+                    const statusClass = `trade-${trade.status.toLowerCase()}`;
+                    const profitClass = trade.actualProfit >= 0 ? 'profit-positive' : 'profit-negative';
+                    
+                    html += `
+                        <tr>
+                            <td class="timestamp">${time}</td>
+                            <td>${trade.marketSlug}</td>
+                            <td>$${trade.yesPrice.toFixed(4)}</td>
+                            <td>$${trade.noPrice.toFixed(4)}</td>
+                            <td>$${trade.totalCost.toFixed(4)}</td>
+                            <td>${trade.size.toFixed(2)}</td>
+                            <td class="profit-positive">$${trade.expectedProfit.toFixed(2)}</td>
+                            <td class="${profitClass}">$${trade.actualProfit.toFixed(2)}</td>
+                            <td><span class="trade-status ${statusClass}">${trade.status}</span></td>
+                        </tr>
+                    `;
+                });
+                
+                html += '</tbody></table>';
+                document.getElementById('tradesTable').innerHTML = html;
+                document.getElementById('lastUpdate').textContent = `Last updated: ${new Date().toLocaleTimeString()}`;
+            } catch (error) {
+                console.error('Error fetching trades:', error);
+            }
+        }
+
+        async function fetchBotStatus() {
+            try {
+                const response = await fetch(`${API_BASE}/bot/status`);
+                const data = await response.json();
+                
+                updateStatusBadge(data.status);
+                
+                if (data.uptime) {
+                    document.getElementById('uptime').textContent = `⏱ Uptime: ${data.uptime}`;
+                } else {
+                    document.getElementById('uptime').textContent = '';
+                }
+            } catch (error) {
+                console.error('Error fetching bot status:', error);
+            }
+        }
+
+        function updateStatusBadge(status) {
+            const badge = document.getElementById('statusBadge');
+            badge.textContent = status;
+            badge.className = 'status-badge';
+            
+            if (status === 'Running') {
+                badge.classList.add('status-running');
+            } else if (status === 'Stopped') {
+                badge.classList.add('status-stopped');
+            } else if (status === 'Paused') {
+                badge.classList.add('status-paused');
+            }
+        }
+
+        async function startBot() {
+            try {
+                const response = await fetch(`${API_BASE}/bot/start`, { method: 'POST' });
+                const data = await response.json();
+                alert(data.message);
+                refresh();
+            } catch (error) {
+                console.error('Error starting bot:', error);
+                alert('Failed to start bot');
+            }
+        }
+
+        async function stopBot() {
+            try {
+                const response = await fetch(`${API_BASE}/bot/stop`, { method: 'POST' });
+                const data = await response.json();
+                alert(data.message);
+                refresh();
+            } catch (error) {
+                console.error('Error stopping bot:', error);
+                alert('Failed to stop bot');
+            }
+        }
+
+        async function pauseBot() {
+            try {
+                const response = await fetch(`${API_BASE}/bot/pause`, { method: 'POST' });
+                const data = await response.json();
+                alert(data.message);
+                refresh();
+            } catch (error) {
+                console.error('Error pausing bot:', error);
+                alert('Failed to pause bot');
+            }
+        }
+
+        async function clearTrades() {
+            if (!confirm('Are you sure you want to clear all trade history?')) return;
+            
+            try {
+                const response = await fetch(`${API_BASE}/trades`, { method: 'DELETE' });
+                const data = await response.json();
+                alert(data.message);
+                refresh();
+            } catch (error) {
+                console.error('Error clearing trades:', error);
+                alert('Failed to clear trades');
+            }
+        }
+
+        function refresh() {
+            fetchStatistics();
+            fetchTrades();
+            fetchBotStatus();
+        }
+
+        // Auto-refresh
+        document.getElementById('autoRefresh').addEventListener('change', (e) => {
+            if (e.target.checked) {
+                refreshInterval = setInterval(refresh, 5000);
+            } else {
+                clearInterval(refreshInterval);
+            }
+        });
+
+        // Initial load
+        refresh();
+        refreshInterval = setInterval(refresh, 5000);
+    </script>
+</body>
+</html>
