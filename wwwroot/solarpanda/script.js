@@ -1,4 +1,4 @@
-// Solar Panda Website JavaScript
+// Solar King Website JavaScript
 
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Console message
-    console.log('Solar Panda website loaded successfully!');
+    console.log('Solar King website loaded successfully!');
 });
 
 // Add CSS animations dynamically

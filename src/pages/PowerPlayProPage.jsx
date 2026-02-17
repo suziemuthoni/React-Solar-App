@@ -189,8 +189,7 @@ function PowerPlayProPage() {
           <p className="contact-intro">Choose how you'd like to proceed</p>
           <div className="contact-info">
             <button className="btn btn-large" onClick={() => setShowPurchaseForm(true)}>Purchase Now</button>
-            <a href="tel:+254800724878" className="btn btn-large">Call us +254 800 724 878</a>
-            <a href="https://wa.me/254747933969" target="_blank" rel="noopener noreferrer" className="btn btn-large">WhatsApp us</a>
+            <button className="btn btn-large" onClick={() => setShowPurchaseForm(true)}>WhatsApp us</button>
           </div>
         </div>
       </section>

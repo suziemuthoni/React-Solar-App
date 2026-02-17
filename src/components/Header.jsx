@@ -52,9 +52,9 @@ function Header() {
           <div className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}>
             <Link to="/">Home</Link>
             {isHomePage ? (
-              <a href="#why-solar-panda" onClick={(e) => scrollToSection(e, '#why-solar-panda')}>About</a>
+              <a href="#why-solar-king" onClick={(e) => scrollToSection(e, '#why-solar-king')}>About</a>
             ) : (
-              <Link to="/#why-solar-panda">About</Link>
+              <Link to="/#why-solar-king">About</Link>
             )}
             <Link to="/products">Products</Link>
             <Link to="/solar-inverter-systems">Solar Inverter Systems</Link>

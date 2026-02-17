@@ -72,7 +72,7 @@ function SolarInverterPage() {
               powered around the clock.
             </p>
             <p>
-              Sun King's solar inverters offer a reliable and safe alternative to generators 
+              solarKing solar inverters offer a reliable and safe alternative to generators 
               while helping you save on fuel costs and electricity bills.
             </p>
             <button className="btn btn-large">Browse our range</button>

@@ -116,14 +116,6 @@ function Products() {
               across the board. Enjoy Bluetooth connectivity, faster phone charging, and improved 
               audio quality.
             </p>
-            <div className="product-pricing">
-              <div className="price-tag">
-                <span className="currency">Ksh.</span>
-                <span className="amount">15</span>
-                <span className="period">per day</span>
-              </div>
-              <p className="payment-details">420 daily payments, Ksh.500 down payment</p>
-            </div>
             <div className="product-actions">
               <button className="btn btn-large">EasyBuy</button>
               <button className="btn btn-large btn-secondary">Buy Now</button>

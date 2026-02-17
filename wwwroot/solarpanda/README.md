@@ -1,6 +1,6 @@
-# Solar Panda Website Clone
+# Solar King Website Clone
 
-This is a cloned version of the Solar Panda website (https://solarpanda.com/) for hosting purposes.
+This is a cloned version of the Solar King website (https://solarpanda.com/) for hosting purposes.
 
 ## Files Included
 
@@ -15,12 +15,12 @@ This is a cloned version of the Solar Panda website (https://solarpanda.com/) fo
 ✅ Fade-in animations on scroll
 ✅ Lazy loading for images
 ✅ Modern CSS Grid layout
-✅ Professional color scheme matching Solar Panda branding
+✅ Professional color scheme matching Solar King branding
 
 ## Sections Included
 
 1. **Hero Section** - "Low-Cost Home Solar Transforming Lives"
-2. **Why Solar Panda** - 5 key benefits (Top Quality, Loan-To-Own, Save More, Trusted Brand, Best Service)
+2. **Why Solar King** - 5 key benefits (Top Quality, Loan-To-Own, Save More, Trusted Brand, Best Service)
 3. **Our Locations in Africa** - Kenya, Senegal, Zambia, Benin
 4. **How We Do It** - 4-step process
 5. **Why Solar Home** - Savings, Education, Health & Safety

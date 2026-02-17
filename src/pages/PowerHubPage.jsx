@@ -44,12 +44,7 @@ function PowerHubPage() {
         '2 x Medium-load appliances',
         '3 x Light-load appliances',
         '8 x Very-light-load appliances'
-      ],
-      pricing: {
-        plan: 'Was Ksh. 17,000, Now Ksh. 13,750 per month',
-        planDetails: '18 monthly payments, Was Ksh.22,500, Now Ksh.21,000 down payment',
-        upfront: 'Was Ksh. 227,000, Now Ksh. 208,000'
-      }
+      ]
     },
     {
       name: 'PowerHub Plus',
@@ -63,12 +58,7 @@ function PowerHubPage() {
         '4 x Medium-load appliances',
         '6 x Light-load appliances',
         '16 x Very-light-load appliances'
-      ],
-      pricing: {
-        plan: 'Was Ksh.22,500, Now Ksh. 17,750 per month',
-        planDetails: '18 monthly payments, Was Ksh.30,500, Now Ksh.27,000 down payment',
-        upfront: 'Was Ksh. 305,000, Now Ksh. 268,000'
-      }
+      ]
     }
   ]
 
@@ -88,7 +78,7 @@ function PowerHubPage() {
             <h1>PowerHub</h1>
             <h2>Power your lights and standard electrical appliances</h2>
             <p className="hero-description">
-              Power your lights and standard electrical appliances with Sun King's PowerHub 
+              Power your lights and standard electrical appliances with solarKing PowerHub 
               solar inverter and energy storage systems for modern homes and businesses. 
               Customised to your needs and fully-integrated into your electricity distribution 
               system to keep you powered at night, during outages, and when you want to go off-grid.
@@ -190,18 +180,6 @@ function PowerHubPage() {
                     ))}
                   </ul>
                 </div>
-                <div className="pricing">
-                  <h4>Pricing</h4>
-                  <div className="price-option">
-                    <strong>Payment plan:</strong>
-                    <p>{config.pricing.plan}</p>
-                    <p className="price-details">{config.pricing.planDetails}</p>
-                  </div>
-                  <div className="price-option">
-                    <strong>Buy upfront:</strong>
-                    <p>{config.pricing.upfront}</p>
-                  </div>
-                </div>
               </div>
             ))}
           </div>
@@ -262,8 +240,7 @@ function PowerHubPage() {
           <p className="contact-intro">Choose how you'd like to proceed</p>
           <div className="contact-info">
             <button className="btn btn-large" onClick={() => setShowPurchaseForm(true)}>Purchase Now</button>
-            <a href="tel:+254800724878" className="btn btn-large">Call us +254 800 724 878</a>
-            <a href="https://wa.me/254747933969" target="_blank" rel="noopener noreferrer" className="btn btn-large">WhatsApp us</a>
+            <button className="btn btn-large" onClick={() => setShowPurchaseForm(true)}>WhatsApp us</button>
           </div>
         </div>
       </section>
