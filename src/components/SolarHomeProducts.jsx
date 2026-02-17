@@ -1,6 +1,11 @@
+import { useState } from 'react'
+import PurchaseForm from './PurchaseForm'
 import './SolarHomeProducts.css'
 
 function SolarHomeProducts() {
+  const [showPurchaseForm, setShowPurchaseForm] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState(null)
+
   const products = [
     {
       id: 1,
@@ -17,38 +22,44 @@ function SolarHomeProducts() {
   ]
 
   const handleGetQuote = (productName) => {
-    // Send to WhatsApp or open contact form
-    const message = `I'm interested in ${productName}. Please provide more information.`
-    const encodedMessage = encodeURIComponent(message)
-    window.open(`https://wa.me/254747933969?text=${encodedMessage}`, '_blank')
+    setSelectedProduct(productName)
+    setShowPurchaseForm(true)
   }
 
   return (
-    <section id="solar-home-products" className="section solar-home-products">
-      <div className="container">
-        <h2>Solar Home Systems and Appliances</h2>
-        
-        <div className="products-showcase">
-          {products.map((product) => (
-            <div key={product.id} className="showcase-card">
-              <div className="product-image-container">
-                <img src={product.image} alt={product.name} />
+    <>
+      <section id="solar-home-products" className="section solar-home-products">
+        <div className="container">
+          <h2>Solar Home Systems and Appliances</h2>
+          
+          <div className="products-showcase">
+            {products.map((product) => (
+              <div key={product.id} className="showcase-card">
+                <div className="product-image-container">
+                  <img src={product.image} alt={product.name} />
+                </div>
+                <div className="product-info">
+                  <h3>{product.name}</h3>
+                  <p className="product-description">{product.description}</p>
+                  <button 
+                    className="btn btn-quote"
+                    onClick={() => handleGetQuote(product.name)}
+                  >
+                    Get Quote
+                  </button>
+                </div>
               </div>
-              <div className="product-info">
-                <h3>{product.name}</h3>
-                <p className="product-description">{product.description}</p>
-                <button 
-                  className="btn btn-quote"
-                  onClick={() => handleGetQuote(product.name)}
-                >
-                  Get Quote
-                </button>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <PurchaseForm 
+        productName={selectedProduct || 'Product'}
+        isOpen={showPurchaseForm}
+        onClose={() => setShowPurchaseForm(false)}
+      />
+    </>
   )
 }
 
